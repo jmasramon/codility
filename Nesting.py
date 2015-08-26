@@ -1,8 +1,6 @@
 __author__ = 'jmasramon'
 
 
-
-
 def solution(S):
     n = len(S)
     tmp = 0
@@ -16,9 +14,6 @@ def solution(S):
     return 1 if tmp == 0 else 0
 
 
-
-
-
 def seq_all_eq_except_positions(n, exceptions, positions, rest):
     orig_n = n
     while (n > 0):
@@ -30,7 +25,6 @@ def seq_all_eq_except_positions(n, exceptions, positions, rest):
                 break
         yield rest
         n -= 1
-
 
 
 if __name__ == '__main__':

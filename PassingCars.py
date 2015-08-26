@@ -21,14 +21,6 @@ def solution(A):
 
 
 
-
-
-
-
-
-
-
-
 assert solution([0, 1, 0,1,1]) == 5
 assert solution([0]) == 0
 assert solution([1]) == 0

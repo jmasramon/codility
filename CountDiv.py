@@ -19,15 +19,6 @@ def solution(A, B, K):
 
 
 
-
-
-
-
-
-
-
-
-
 assert solution(6, 11, 2) == 3
 assert solution(0, 5, 2) == 3
 assert solution(0, 0, 2) == 1

@@ -83,6 +83,8 @@ def fasterSolution(A): # not mine; copied
             equi_leaders += 1
 
     return equi_leaders
+
+
 def seq_all_eq_except_positions(n, exceptions, positions, rest):
     orig_n = n
     exception_found = False

@@ -17,9 +17,6 @@ def solution(N):
     return min_per
 
 
-
-
-
 def seq_all_eq_except_positions(n, exceptions, positions, rest):
     orig_n = n
     orig_exceps = len(exceptions)
@@ -47,4 +44,3 @@ if __name__ == '__main__':
     assert solution(3) == 8
     assert solution(4) == 8
     assert solution(25) == 20
-
