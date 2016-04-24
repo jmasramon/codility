@@ -4,22 +4,39 @@ __author__ = 'jmasramon'
 # jump_dist
 
 
-def min_num_jumps(fr, to, jd):
-    print 'div:', (to-fr)/jd, 'mod:', (to-fr)%jd , 'tot:', (to-fr)/jd + (to-fr)%jd
-    return (to-fr)/jd + (1 if (to-fr)%jd else 0)
+def solution1(X, Y, D):
+    pos = X
+    res = 0
+    while (pos<Y):
+        pos += D
+        res += 1
+    return res
+
+def solution2(x,y,d):
+    pos = x
+    res = 0
+    while (pos % y == pos):
+        pos += d
+        res += 1
+    return res
+
+def solution(x,y,d):
+    dist = y-x
+    jumps =  dist / d
+    return jumps if (dist % d == 0) else jumps + 1
 
 
 
 
-print(min_num_jumps(1,1, 2))
-assert(min_num_jumps(1,1, 2) == 0)
-print(min_num_jumps(1,2, 2))
-assert(min_num_jumps(1,2, 2) == 1)
-print(min_num_jumps(1,4, 2))
-assert(min_num_jumps(1,4, 2) == 2)
-print(min_num_jumps(1,1000000000, 2))
-assert(min_num_jumps(1,1000000000, 2) == 500000000)
-print(min_num_jumps(1,1000000000, 10))
-assert(min_num_jumps(1,1000000000, 10) == 100000000)
-print(min_num_jumps(10,85, 30))
-assert(min_num_jumps(10,85, 30) == 3)
+print(solution(1,1, 2))
+assert(solution(1,1, 2) == 0)
+print(solution(1,2, 2))
+assert(solution(1,2, 2) == 1)
+print(solution(1,4, 2))
+assert(solution(1,4, 2) == 2)
+print(solution(1,1000000000, 2))
+assert(solution(1,1000000000, 2) == 500000000)
+print(solution(1,1000000000, 10))
+assert(solution(1,1000000000, 10) == 100000000)
+print(solution(10,85, 30))
+assert(solution(10,85, 30) == 3)
