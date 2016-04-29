@@ -53,5 +53,6 @@ def solution():
                     res += 'NO/n'
     return res
 
-assert solution() == 'YES/nNO/n'
+print solution()
+# assert solution() == 'YES/nNO/nNO/nYES/nYES/nNO/nNO/nYES/nYES/nYES/nYES/n'
 
