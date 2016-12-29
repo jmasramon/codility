@@ -1,0 +1,8 @@
+(def xs [3 2 1])
+xs
+(peek xs)
+(pop xs)
+(push xs 4)
+(push 4  xs)
+(conj (pop xs) 4 5)
+exit
