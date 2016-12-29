@@ -1,5 +1,21 @@
 __author__ = 'jmasramon'
 
+def solution1(A):
+    n = len(A)
+    values = [None]*(n-1)
+    # print n, values
+    for i in xrange(n-1):
+        left, right = 0,0
+        for j in xrange(i+1):
+            left += A[j]
+        # print left
+        for j in xrange(i+1, n):
+            right += A[j]
+        # print right
+        values[i] = abs(left - right)
+        # print values
+    return min(values)
+
 def solution(A):
     # write your code in Python 2.7
     print A
@@ -31,7 +47,7 @@ print solution([2000,2000])
 print solution([-3,3,-2,2])
 print solution([1,3,-2,-3,1])
 
-def fastSolution(A):
+def fastSolution(A):  # TODO: check that I understand why
     total_sum = sum(A)
     print 'total_sum', total_sum
     partial_sum = 0
