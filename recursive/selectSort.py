@@ -1,34 +1,29 @@
-def merge(A, B, C):
-    # cannot assume A and B of equal len
-    # print '  received A,B,C', (A,B,C)
-    if B == None:
-        return merge(A,C,[])
-    n = len(A)
-    m = len(B)
-    if n == 0:
-        C.extend(B)
-        # print '    finally returning', C
-        return C
-    elif m == 0:
-        C.extend(A)
-        # print '    finally returning', C
-        return C
-    elif A[0] < B[0]:
-        C.append(A.pop(0))
-        merge(A,B,C)
-    else:
-        C.append(B.pop(0))
-        merge(A,B,C)
-    # print '  returning', C
-    return C
+def selectSortRecursive(A):
+    def findTheIndexOfTheMax(A, n):
+        maxim = 0
+        for i in range(n):
+            if A[i] > A[maxim]:
+                maxim = i
+        return maxim
 
-def mergeSortRecursive(A):
-    n = len(A)
-    if (n==1):
-        return A
-    else:
-        return merge(mergeSortRecursive(A[:(n/2)]),mergeSortRecursive(A[(n/2):]),[])
+    def swapTheMax(A, n, maxim):
+        temp = A[n-1]
+        A[n-1] = A[maxim]
+        A[maxim] = temp
 
+    def putTheMaxAtTheEnd(A, n):
+        maxim = findTheIndexOfTheMax(A, n)
+        swapTheMax(A, n, maxim)
+
+    def loop(A, n):
+        if n == 1:
+            return
+        else:
+            putTheMaxAtTheEnd(A, n)
+            loop(A, n-1)
+
+    loop(A, len(A))
+    return A
 
 def myAssert(func, inp, e_res):
     res = func(inp)
@@ -38,7 +33,7 @@ def myAssert(func, inp, e_res):
     except AssertionError, e:
         return '\033[91m' + 'KK !!!   expected: ' + str(e_res) + ' but got: ' + str(res) + '\033[0m'
 
-algorithms = [mergeSortRecursive]
+algorithms = [selectSortRecursive]
 inputs =    [[6,3,0,-1,-3,-5], [-5,-3,-1,0,3,6], [0,-1,-5,6,3,-3], [0,3,-1,-5,6,-3], [3,0,-1,-5,6,-3], [2,1], [1,1,1], [1,2,1,2,1]]
 outputs =   [[-5,-3,-1,0,3,6], [-5,-3,-1,0,3,6], [-5,-3,-1,0,3,6], [-5,-3,-1,0,3,6], [-5,-3,-1,0,3,6], [1,2], [1,1,1], [1,1,1,2,2]]
 
