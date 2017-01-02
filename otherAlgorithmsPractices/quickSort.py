@@ -21,7 +21,30 @@ def partition(A, l, r):
         return rr
     print 'finished pivoting with:', A, ll, u, rr
     return r 
+
+def partitionClassic(A, l, r): # u last (not in between)
+    ll = rr = l
+    pivot = A[r]
     
+    print 'starting to pivot with:',A, ll, l, rr, 'pivot:', pivot
+    for u in xrange(l, r):
+        if A[u] <= pivot: # should be placed in left group
+            temp = A[u]
+            A[u] = A[rr]
+            A[rr] = temp
+            rr += 1
+        u += 1
+        print A, ll, u, rr
+    if rr > 0 or ((rr == 0) and (ll == 0)):
+        print 'moving the pivot'
+        A[r] = A[rr]
+        A[rr] = pivot
+        print 'finished pivoting with:', A, ll, u, rr
+        return rr
+    print 'finished pivoting with:', A, ll, r-1, rr
+    return r 
+
+
 
 # print partition([6,3,0,-1,-3,-5],0,5)
 # print
@@ -30,7 +53,7 @@ def partition(A, l, r):
 def quickSort(A):
     def loop(A, l, r):
         if (r-l)>0:
-            pos = partition(A, l, r)
+            pos = partitionClassic(A, l, r)
             print 'pivot moved to:', pos
             loop(A, l, pos-1)
             loop(A, pos+1, r)
