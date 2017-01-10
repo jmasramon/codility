@@ -25,6 +25,8 @@ def selectSortRecursive(A):
     loop(A, len(A), 1)
     return A
 
+#################################################################################
+
 def myAssert(func, inp, e_res):
     res = func(inp)
     try:
