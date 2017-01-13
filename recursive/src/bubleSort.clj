@@ -1,16 +1,9 @@
 (ns bubleSort
   (:gen-class))
 
-(defn -main [& args]
   (defn currentIsBiggerThanNextOne [B i]
   ;;   (println "checking" i "in" B)
     (> (get B i) (get B (inc i))))
-
-  (currentIsBiggerThanNextOne [1 8 4 2 5 7 ] 0)
-  (currentIsBiggerThanNextOne [1 8 4 2 5 7 ] 1)
-  (currentIsBiggerThanNextOne [1 8 4 2 5 7 ] 2)
-  (currentIsBiggerThanNextOne [1 8 4 2 5 7 ] 3)
-  (currentIsBiggerThanNextOne [1 8 4 2 5 7 ] 4)
 
 
   (defn swapCurrentAndNext [B i]
@@ -25,13 +18,6 @@
                   [])))
         B)))
 
-  (swapCurrentAndNext [1 8 4 2 5 7 ] 0)
-  (swapCurrentAndNext [1 8 4 2 5 7 ] 1)
-  (swapCurrentAndNext [1 8 4 2 5 7 ] 2)
-  (swapCurrentAndNext [1 8 4 2 5 7 ] 3)
-  (swapCurrentAndNext [1 8 4 2 5 7 ] 4)
-  (swapCurrentAndNext [1 8 4 2 5 7 ] 5)
-
   (defn bubleSortOnce [A]
       (let [n (count A) res (loop [B A i 0]
                   (if (< i (dec n))
@@ -43,6 +29,25 @@
         res))
 
 
-  (bubleSortOnce [1 8 4 2 5 7 ])
+
+(defn -main [& args]
+  (prn "trying bigger than the next")
+  (prn (currentIsBiggerThanNextOne [1 8 4 2 5 7 ] 0))
+  (prn (currentIsBiggerThanNextOne [1 8 4 2 5 7 ] 1))
+  (prn (currentIsBiggerThanNextOne [1 8 4 2 5 7 ] 2))
+  (prn (currentIsBiggerThanNextOne [1 8 4 2 5 7 ] 3))
+  (prn (currentIsBiggerThanNextOne [1 8 4 2 5 7 ] 4))
+  
+  (prn "trying swapCurrentAndNext")
+  (prn (swapCurrentAndNext [1 8 4 2 5 7 ] 0))
+  (prn (swapCurrentAndNext [1 8 4 2 5 7 ] 1))
+  (prn (swapCurrentAndNext [1 8 4 2 5 7 ] 2))
+  (prn (swapCurrentAndNext [1 8 4 2 5 7 ] 3))
+  (prn (swapCurrentAndNext [1 8 4 2 5 7 ] 4))
+  (prn (swapCurrentAndNext [1 8 4 2 5 7 ] 5))
+  
+  (prn "trying bubleSort")
+  (prn (bubleSortOnce [1 8 4 2 5 7 ]))
+
 )
 
