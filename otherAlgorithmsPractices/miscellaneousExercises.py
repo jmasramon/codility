@@ -133,44 +133,82 @@ def tapeEquilibriumBis(A):
 print (tapeEquilibrium([3,1,2,4,3]))
 print (tapeEquilibriumBis([3,1,2,4,3]))
 
+# difficult one !!!
 def swapToEqualSum(m, A, B):
+	n = len(A)
 	def countElems(A):
 		numberOfElems = [0]*m
 		sum_res = 0
-		for i in xrange(len(A)):
+		for i in xrange(n):
 			numberOfElems[A[i]] += 1
 			sum_res += A[i]
 		return numberOfElems, sum_res
-	numElemsA, sumA =  (countElems(A))
-	numElemsB, sumB =  (countElems(B))
+	numElemsA, sumA = (countElems(A))
+	numElemsB, sumB = (countElems(B))
+	d = sumB - sumA
+	if d%2 != 0:
+		return False;
 
-	numNonCommonElems = [0]*m
-	for i in xrange(m):
-		numNonCommonElems[i] = abs(numElemsA[i] - numElemsB[i])
+	for i in xrange(n):
+		potentialAvalue = B[i] - d
+		if potentialAvalue > 0 and potentialAvalue < m and numElemsA[potentialAvalue] > 0:
+			return True
 
-	return (numElemsA, sumA, numElemsB, sumB, numNonCommonElems)
+	return False
 
 print swapToEqualSum(4, [1,2,3,0,0,2,3,0], [1,2,3,1,0,2,3,0])
 print swapToEqualSum(4, [1,2,3,1,1,2,3,0], [1,2,3,0,0,2,3,0])
 
+def permCheck(A):
+	n = len(A)
+	def countElements(A, n):
+		count = [0]*n
+		for i in xrange(n):
+			if A[i]<=n:
+				count[A[i]-1] += 1
+		print 'count:', count
+		return count
+	numIntsFound = sum(countElements(A, n))
+	print 'num ints found:', numIntsFound
+	if numIntsFound == n:
+		return True
+	return False
+
+print 'permCheck:'
+print permCheck([4,1,3,2]) == True
+print permCheck([4,1,3]) == False
 
 
+def missingInteger(A):
+	n=len(A)
+	def countElems(A,n):
+		count = [0]*n
+		for i in xrange(n):
+			if A[i]<=n:
+				count[A[i]-1] += 1
+		return count
+	count = countElems(A, n)
+	for i in xrange(n):
+		if count[i] == 0:
+			return i+1
+	return
 
+print 'missingInteger:'
+print missingInteger([1,3,6,4,1,2]) == 5
 
+def frogRiverOne(A, x):
+	n=len(A)
+	def countElems(A,n):
+		count = [0]*n
+		for i in xrange(n):
+			if A[i]<=n:
+				count[A[i]-1] += 1
+		return count
+	count = countElems(A, n)
+	for i in xrange(n):
+		if count[i] == 0:
+			return i+1
+	return
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+print 'frogRiverOne:'
+print frogRiverOne([1,3,1,4,2,3,5,4], 5) == 6
